@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 2: Solving Equations</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        /* Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(180deg, #282c34, #4e5b62);
+            color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
+
+        /* Upper Column Section */
+        .upper-column {
+            background: #1d1f21;
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .upper-column h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #00bcd4;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .upper-column p {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin: 15px auto;
+        }
+
+        .upper-column .btn {
+            padding: 10px 25px;
+            background-color: #ff5722;
+            color: white;
+            font-size: 1em;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .upper-column .btn:hover {
+            background-color: #ff784e;
+            transform: translateY(-3px);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+            background-color: #2a2c30;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards 0.5s;
+        }
+
+        .content-section h2 {
+            font-size: 2.2em;
+            color: #00bcd4;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content-section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #eaeaea;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+        }
+
+        .content-section ul li {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #eaeaea;
+            position: relative;
+        }
+
+        .content-section ul li::marker {
+            color: #ff5722; /* Custom bullet color */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Upper Column Section -->
+    <div class="upper-column">
+        <h1>Unit 2: Solving Equations</h1>
+        <p>This section focuses on key techniques for solving both non-linear and linear equations, exploring both direct and iterative approaches.</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2>Key Concepts:</h2>
+
+        <h3>Solutions of Non-Linear Equations:</h3>
+        <ul>
+            <li><b>Types of Non-Linear Equations:</b> These involve variables with powers, roots, or complex relationships.</li>
+            <li><b>Polynomial Equations:</b> Equations with terms that involve powers of variables.</li>
+        </ul>
+
+        <h3>Methods to Solve Non-Linear Equations:</h3>
+        <ul>
+            <li><b>Direct Methods:</b> These find the solution in one step.</li>
+            <li><b>Iterative Methods:</b> These methods start with an initial guess and refine it over multiple steps.</li>
+        </ul>
+
+        <h3>Common Iterative Methods:</h3>
+        <ul>
+            <li><b>Bisection Method:</b> Divides the interval in half to find the solution.</li>
+            <li><b>False Position Method:</b> Uses a straight line to improve the estimate.</li>
+            <li><b>Secant Method:</b> Uses two initial guesses to approximate the solution.</li>
+            <li><b>Newton-Raphson Method:</b> Uses calculus to refine the estimate based on the current guess.</li>
+            <li><b>Birge-Vieta Method:</b> Solves polynomial equations efficiently.</li>
+        </ul>
+
+        <h3>Convergence of Iterative Methods:</h3>
+        <ul>
+            <li><b>Bisection Method:</b> Slow but reliable convergence.</li>
+            <li><b>False Position Method:</b> Improvement over bisection but slower in some cases.</li>
+            <li><b>Newton-Raphson Method:</b> Faster convergence, requires a good initial guess.</li>
+            <li><b>Secant Method:</b> Similar to Newton-Raphson but doesn't require the function's derivative.</li>
+        </ul>
+
+        <h3>Solutions of Linear Equations:</h3>
+        <ul>
+            <li><b>Linear Equations:</b> Equations where variables have a direct relationship involving addition, subtraction, and multiplication by constants.</li>
+        </ul>
+
+        <h3>Methods for Linear Equations:</h3>
+        <ul>
+            <li><b>Direct Methods:</b> 
+                <ul>
+                    <li>Gauss Elimination Method</li>
+                    <li>Gauss-Jordan Method</li>
+                    <li>Pivoting</li>
+                </ul>
+            </li>
+            <li><b>Iterative Method:</b> 
+                <ul>
+                    <li>Gauss-Seidel Method</li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

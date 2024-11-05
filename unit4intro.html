@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 4: Approximations and ODEs</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        /* Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(180deg, #282c34, #4e5b62);
+            color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
+
+        /* Upper Column Section */
+        .upper-column {
+            background: #1d1f21;
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .upper-column h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #00bcd4;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .upper-column p {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin: 15px auto;
+        }
+
+        .upper-column .btn {
+            padding: 10px 25px;
+            background-color: #ff5722;
+            color: white;
+            font-size: 1em;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .upper-column .btn:hover {
+            background-color: #ff784e;
+            transform: translateY(-3px);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+            background-color: #2a2c30;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards 0.5s;
+        }
+
+        .content-section h2 {
+            font-size: 2.2em;
+            color: #00bcd4;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content-section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #eaeaea;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+        }
+
+        .content-section ul li {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #eaeaea;
+            position: relative;
+        }
+
+        .content-section ul li::marker {
+            color: #ff5722; /* Custom bullet color */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Upper Column Section -->
+    <div class="upper-column">
+        <h1>Unit 4: Approximations and ODEs</h1>
+        <p>This section focuses on two important topics: Approximations and the Solution of Ordinary Differential Equations (ODEs).</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2>Key Concepts:</h2>
+
+        <h3>Approximation of Functions:</h3>
+        <ul>
+            <li><b>Taylor Series Representation:</b> Represents a function as a sum of its derivatives, useful for finding approximate solutions.</li>
+            <li><b>Chebyshev Polynomials:</b> Special polynomials that help minimize errors when approximating functions.</li>
+        </ul>
+
+        <h3>Solution of Ordinary Differential Equations (ODEs):</h3>
+        <ul>
+            <li><b>Euler’s Method:</b> A simple method to approximate ODE solutions by breaking the problem into small steps.</li>
+            <li><b>Runge-Kutta Methods:</b> More accurate methods for solving ODEs, including the 2nd and 4th order methods.</li>
+            <li><b>Predictor-Corrector Methods:</b> Involves predicting an answer and correcting it for better accuracy, such as the Modified Euler's Method.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

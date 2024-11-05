@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newton's backward difference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body styling with dark background gradient and typography */
+        body {
+            color: #b9abab;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            line-height: 1.6;
+        }
+        
+        /* Background animation */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Container for the content */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Heading box styles */
+        .heading-box {
+            background: rgba(175, 180, 187, 0.9);
+            padding: 20px;
+            color: #1c1c1c;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .heading-box:hover {
+            transform: scale(1.05);
+        }
+        
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+        
+        /* Box styles */
+        .box {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            background: rgba(100, 100, 100, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        /* Button styles */
+        button {
+            padding: 12px 24px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        button:hover {
+            background-color: #ff1a55;
+            transform: scale(1.05);
+        }
+        
+        /* Code block styles */
+        pre, code {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        /* Highlight.js code styling */
+        .hljs {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+        }
+        
+        /* Media query for responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+        
+            h1 {
+                font-size: 2.5em;
+            }
+        
+            h2 {
+                font-size: 1.5em;
+            }
+        
+            .box {
+                padding: 15px;
+            }
+        }</style>
+</head>
+<body>
+
+    <div class="heading-box">
+        <h1>Newton's backward difference</h1>
+    </div>
+
+    <h2>Code</h2>
+    <div class="box">
+        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#define MaxSize 10
+
+long fact(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    return n * fact(n - 1);
+}
+
+float newtonBack(float arr[MaxSize][MaxSize], float x, int n) {
+    float res, u, prod = 1;
+    int i, j;
+
+    for (i = 2; i <= n; i++) {
+        for (j = n - 1; j >= i - 1; j--) {
+            arr[i][j] = arr[i - 1][j] - arr[i - 1][j - 1];
+        }
+    }
+
+    res = arr[1][n - 1];
+    u = (x - arr[0][n - 1]) / (arr[0][1] - arr[0][0]);
+
+    printf("%f\n", u);
+
+    for (i = 0; i < n - 1; i++) {
+        prod = 1;
+        for (j = 0; j <= i; j++) {
+            prod *= (u + j);
+        }
+        prod *= (arr[i + 2][n - 1] / fact(i + 1));
+        res += prod;
+    }
+    return res;
+}
+
+int main() {
+    float arr[MaxSize][MaxSize], x;
+    int n, i;
+
+    printf("Enter number of intervals (upto 10)\n");
+    scanf("%d", &n);
+
+    if (n > 10 || n <= 0) {
+        printf("Invalid intervals\n");
+        return 0;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("Enter x%d value: \t", i);
+        scanf("%f", &arr[0][i]);
+        printf("Enter y%d value: \t", i);
+        scanf("%f", &arr[1][i]);
+    }
+
+    printf("Enter the value of x\t");
+    scanf("%f", &x);
+
+    printf("\nValue at f(%f) = %f", x, newtonBack(arr, x, n));
+    return 0;
+}
+
+        </code></pre>
+    </div>
+
+    <h2>Output</h2>
+    <div class="box">
+        <pre>
+            <code class="language-c">
+Enter numer of intervals (upto 10)
+4
+Enter x0 value:         20
+Enter y0 value:         0.342
+Enter x1 value:         25
+Enter y1 value:         0.423
+Enter x2 value:         30
+Enter y2 value:         0.5
+Enter x3 value:         35
+Enter y3 value:         0.65
+Enter the value of x    0.39
+-6.922000
+
+Value at f(0.390000) = -1.481381
+</code>
+        </pre>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+
+</body>
+</html>

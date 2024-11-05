@@ -1,0 +1,161 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #121212; /* Dark Background */
+    line-height: 1.6;
+    color: #e0e0e0; /* Light Gray for text */
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    background-color: #1f1f1f; /* Darker Gray */
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2rem;
+}
+
+/* Main Layout */
+.main-layout {
+    display: flex;
+    margin: 20px 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    flex: 1;
+    background-color: #222; /* Dark Gray */
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 8px;
+    margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar .nav-links {
+    list-style-type: none;
+}
+
+.sidebar .nav-links li {
+    margin: 15px 0;
+}
+
+.sidebar .nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.sidebar .nav-links a:hover {
+    color: #ffcc00; /* Bright Gold */
+}
+
+/* Main Content Styles */
+.content {
+    flex: 3;
+    padding: 20px;
+    background-color: #2a2a2a; /* Slightly lighter dark */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Syllabus Section */
+.syllabus {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #d7dee4; /* Light Gray */
+}
+
+.syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.syllabus-item {
+    background-color: #3a3a3a; /* Darker Gray for items */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #ffffff;
+}
+
+.syllabus-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2); /* Soft Gold Shadow */
+}
+
+.syllabus-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.syllabus-item p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 15px;
+    background-color: #ffcc00; /* Bright Gold */
+    color: #121212; /* Dark Background */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #ddab14; /* Darker Gold */
+    transform: translateY(-2px);
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+}
+
+.contact-info p {
+    margin: 10px 0;
+}
+
+/* Footer */
+.footer {
+    padding: 20px 0;
+    background-color: #222; /* Dark Gray */
+    text-align: center;
+    color: #ffffff;
+    border-radius: 8px;
+    margin-top: 20px;
+}

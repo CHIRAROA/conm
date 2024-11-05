@@ -1,0 +1,53 @@
+/* CSS for layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.top-frame {
+    flex: 0 0 12%;
+    display: flex;
+    background-color: #f0f0f0; /* Add a background color for visual appeal */
+}
+
+.top-frame-content{
+    flex: 1;
+    border: 0px solid black; /* Example border, you can adjust or remove */
+    margin: 5px; /* Example margin, adjust as needed */
+
+}
+
+
+.bottom-frame {
+    flex: 1;
+    display: flex;
+}
+
+.left-frame {
+    flex: 0 0 15%;
+    background-color: #f0f0f0; /* Add a background color for visual appeal */
+}
+
+.right-frame {
+    flex: 1;
+}
+
+.frame-content {
+    width: 100%;
+    height: 100%;
+}
+
+#upperlogo
+{
+          height: 100px;
+          margin-left: 1000px;
+          
+}

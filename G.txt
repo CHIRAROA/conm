@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+        position: relative;
+        width: 300px; /* Adjust container width as needed */
+        height: 200px; /* Adjust container height as needed */
+      }
+      
+      .box1, .box2 {
+        width: 100px; /* Adjust box width as needed */
+        height: 100px; /* Adjust box height as needed */
+        background-color: #ccc; /* Adjust background color as needed */
+      }
+      
+      .box1 {
+        position: relative; /* Or you can omit this since it's default */
+      }
+      
+      .box2 {
+        position: absolute;
+        top: 20px; /* Adjust top position as needed */
+        left: 20px; /* Adjust left position as needed */
+        background-color: #f00; /* Adjust background color as needed */
+      }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+          This is box 1.
+        </div>
+        <div class="box2">
+          This is box 2.
+        </div>
+      </div>
+</body>
+</html>

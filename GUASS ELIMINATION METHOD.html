@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Decimal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body styling with dark background gradient and typography */
+        body {
+            color: #b9abab;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            line-height: 1.6;
+        }
+        
+        /* Background animation */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Container for the content */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Heading box styles */
+        .heading-box {
+            background: rgba(175, 180, 187, 0.9);
+            padding: 20px;
+            color: #1c1c1c;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .heading-box:hover {
+            transform: scale(1.05);
+        }
+        
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+        
+        /* Box styles */
+        .box {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            background: rgba(100, 100, 100, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        /* Button styles */
+        button {
+            padding: 12px 24px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        button:hover {
+            background-color: #ff1a55;
+            transform: scale(1.05);
+        }
+        
+        /* Code block styles */
+        pre, code {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        /* Highlight.js code styling */
+        .hljs {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+        }
+        
+        /* Media query for responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+        
+            h1 {
+                font-size: 2.5em;
+            }
+        
+            h2 {
+                font-size: 1.5em;
+            }
+        
+            .box {
+                padding: 15px;
+            }
+        }</style>
+</head>
+<body>
+
+    <div class="heading-box">
+        <h1>Guass Elimination</h1>
+    </div>
+
+    <h2>Code</h2>
+    <div class="box">
+        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+#define SIZE 10 // Maximum size of the system of equations
+
+// Function to perform Gauss Elimination
+void gaussElimination(float a[SIZE][SIZE], int n) {
+    int i, j, k;
+    float ratio;
+
+    // Forward elimination
+    for (i = 0; i &lt; n - 1; i++) {
+        for (j = i + 1; j &lt; n; j++) {
+            ratio = a[j][i] / a[i][i];
+            for (k = 0; k &lt;= n; k++) {
+                a[j][k] = a[j][k] - ratio * a[i][k];
+            }
+        }
+    }
+
+    // Back substitution
+    float x[SIZE];
+    x[n - 1] = a[n - 1][n] / a[n - 1][n - 1];
+    for (i = n - 2; i &gt;= 0; i--) {
+        x[i] = a[i][n];
+        for (j = i + 1; j &lt; n; j++) {
+            x[i] = x[i] - a[i][j] * x[j];
+        }
+        x[i] = x[i] / a[i][i];
+    }
+
+    // Display solution
+    printf("\nSolution:\n");
+    for (i = 0; i &lt; n; i++) {
+        printf("x[%d] = %.2f\n", i, x[i]);
+    }
+}
+
+int main() {
+    float a[SIZE][SIZE];
+    int n, i, j;
+
+    // Input number of unknowns
+    printf("Enter the number of unknowns: ");
+    scanf("%d", &n);
+
+    // Input augmented matrix
+    printf("Enter the elements of the augmented matrix row by row:\n");
+    for (i = 0; i &lt; n; i++) {
+        for (j = 0; j &lt;= n; j++) {
+            scanf("%f", &a[i][j]);
+        }
+    }
+
+    // Perform Gauss Elimination
+    gaussElimination(a, n);
+
+    return 0;
+}
+            
+        </code></pre>
+    </div>
+
+    <h2>Output</h2>
+    <div class="box">
+        <pre>
+            <code class="language-c">
+Enter the number of unknowns: 3
+Enter the elements of the augmented matrix row by row:
+1 2 3 6
+2 1 2 5
+4 2 5 11
+
+Solution:
+x[0] = 1.00
+x[1] = 1.00
+x[2] = 1.00
+
+--------------------------------
+Process exited after 28.44 seconds with return value 0
+Press any key to continue . . .
+</code>
+        </pre>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Decimal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body styling with dark background gradient and typography */
+        body {
+            color: #b9abab;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            line-height: 1.6;
+        }
+        
+        /* Background animation */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Container for the content */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Heading box styles */
+        .heading-box {
+            background: rgba(175, 180, 187, 0.9);
+            padding: 20px;
+            color: #1c1c1c;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .heading-box:hover {
+            transform: scale(1.05);
+        }
+        
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+        
+        /* Box styles */
+        .box {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            background: rgba(100, 100, 100, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        /* Button styles */
+        button {
+            padding: 12px 24px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        button:hover {
+            background-color: #ff1a55;
+            transform: scale(1.05);
+        }
+        
+        /* Code block styles */
+        pre, code {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        /* Highlight.js code styling */
+        .hljs {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+        }
+        
+        /* Media query for responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+        
+            h1 {
+                font-size: 2.5em;
+            }
+        
+            h2 {
+                font-size: 1.5em;
+            }
+        
+            .box {
+                padding: 15px;
+            }
+        }</style>
+</head>
+<body>
+
+    <div class="heading-box">
+        <h1>BIRGE-VIETA</h1>
+    </div>
+
+    <h2>Code</h2>
+    <div class="box">
+        <pre><code class="language-c">
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+float p[6], ply[6],q[6];
+float synth(int m, float r){
+                int i;
+                q[0] = p[0];
+                for(i=1;i&lt;=m;i++){
+                        q[i] = (q[i-1]*r)+p[i];
+                }
+                printf("&lt;br&gt;");
+                for(i=0;i&lt;m;i++){
+                    printf("&lt;span&gt;%f&lt;/span&gt;",q[i]);
+                }
+                printf("&lt;span&gt;%f&lt;/span&gt;",q[m]);
+                return(q[m]);
+}
+
+int main(){
+                
+                int m,i,flag=0;
+                float r, x,x1, fx, fdx;
+                printf("&lt;span&gt;BIRGE-VIETA METHOD&lt;/span&gt;");
+    printf("&lt;br&gt; Enter the highest degree of the equation (max 5): ");
+                scanf("%d",&m);
+                    for(i=0;i&lt;=m;i++){
+                printf("&lt;br&gt; Coefficient x[%d] = ",m-i);
+                    scanf("%f",&p[i]);
+                        ply[i] = p[i];
+                                }
+                printf("&lt;br&gt; Enter the initial value x0 : ");
+                scanf("%f",&r);
+                x = r;
+
+                do{
+                    printf("&lt;br&gt;%f&lt;br&gt;",x);
+                    fx = synth(m,x);
+                                for(i=0;i&lt;=m;i++){
+                                    p[i]=q[i];
+                                }
+                    fdx = synth(m-1,x);
+                    x1 = x - (fx/fdx);
+
+                                if(fabs(x1-x) &lt;= 0.0009){
+                                        flag = 1;
+                                    }
+                    x = x1;
+
+                                for(i=0;i&lt;=5;i++){
+                                        p[i]=ply[i];
+                                }
+
+                }while(flag!=1);
+                printf("&lt;br&gt;Approximate root = %f", x1);
+}
+                
+        </code></pre>
+    </div>
+
+    <h2>Output</h2>
+    <div class="box">
+        <pre>
+            <code class="language-c">
+                BIRGE-VIETA METHOD
+ Enter the highest degree of the equation (max 5): 2
+
+ Coefficient x[2] = 1
+
+ Coefficient x[1] = 5
+
+ Coefficient x[0] = 2
+
+ Enter the initial value x0 : 0.5
+
+0.500000
+
+        1.000000        5.500000        4.750000
+        1.000000        6.000000
+-0.291667
+
+        1.000000        4.708333        0.626736
+        1.000000        4.416667
+-0.433569
+
+        1.000000        4.566431        0.020136
+        1.000000        4.132862
+-0.438441
+
+        1.000000        4.561559        0.000024
+        1.000000        4.123117
+Approximate root = -0.438447
+--------------------------------
+Process exited after 18.4 seconds with return value 0
+Press any key to continue . . .
+</code>
+        </pre>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+
+</body>
+</html>

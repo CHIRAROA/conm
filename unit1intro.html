@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 1: Data Representation</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        /* Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(180deg, #282c34, #4e5b62);
+            color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
+
+        /* Upper Column Section */
+        .upper-column {
+            background: #1d1f21;
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .upper-column h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #00bcd4;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .upper-column p {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin: 15px auto;
+        }
+
+        .upper-column .btn {
+            padding: 10px 25px;
+            background-color: #ff5722;
+            color: white;
+            font-size: 1em;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .upper-column .btn:hover {
+            background-color: #ff784e;
+            transform: translateY(-3px);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+            background-color: #2a2c30;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards 0.5s;
+        }
+
+        .content-section h2 {
+            font-size: 2.2em;
+            color: #00bcd4;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content-section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #eaeaea;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+        }
+
+        .content-section ul li {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #eaeaea;
+            position: relative;
+        }
+
+        .content-section ul li::marker {
+            color: #ff5722; /* Custom bullet color */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Upper Column Section -->
+    <div class="upper-column">
+        <h1>Unit 1: Data Representation</h1>
+        <p>Understanding how numbers are stored, processed, and represented in computers to maintain accuracy in calculations.</p>
+        <button class="btn" onclick="enhanceBackground()">Learn More</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section" id="content">
+        <h2>Unit Overview</h2>
+        <p id="unit-description">Unit One covers how numbers are stored and processed in computers, helping to understand how computers work with numerical data.</p>
+
+        <h3>Key Concepts:</h3>
+        <ul>
+            <li><b>Data Representation in Computers:</b> Computers work with binary data—sequences of 0s and 1s.</li>
+            <li><b>Exact and Approximate Numbers:</b> Limited space can lead to small errors in number representation.</li>
+            <li><b>Significant Digits and Precision:</b> Handling these digits is essential for reducing errors in calculations.</li>
+            <li><b>Floating Point Arithmetic:</b> Floating-point numbers store real numbers, but normalization can cause rounding errors.</li>
+            <li><b>Error Propagation:</b> Errors spread during operations like addition, subtraction, multiplication, and division.</li>
+        </ul>
+    </div>
+
+    <script>
+        function enhanceBackground() {
+            document.body.style.background = 'linear-gradient(to right, #ff5722, #ffcc00)';
+            document.body.style.transition = 'background 0.5s ease';
+
+            // Change button text and toggle description
+            const button = document.querySelector('.btn');
+            const description = document.getElementById('unit-description');
+            if (description.innerHTML === "Unit One covers how numbers are stored and processed in computers, helping to understand how computers work with numerical data.") {
+                description.innerHTML = "This unit will delve deeper into data structures, binary operations, and how they affect computational accuracy.";
+                button.textContent = 'Content Updated!';
+            } else {
+                description.innerHTML = "Unit One covers how numbers are stored and processed in computers, helping to understand how computers work with numerical data.";
+                button.textContent = 'Learn More';
+            }
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Design Page</title>
+    <style>
+        /* Custom Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        /* Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #8EC5FC 0%, #E0C3FC 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Upper column (header) */
+        .upper-column {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            padding: 30px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 2s ease-in-out forwards;
+            z-index: 1;
+        }
+
+        /* Upper column text styling */
+        .upper-column h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .upper-column p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: 300;
+            color: #eaeaea;
+        }
+
+        /* Button Styles */
+        .btn {
+            margin-top: 30px;
+            padding: 15px 30px;
+            background-color: #ff6f61;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #ff9770;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Animation for the upper column fade-in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Info Section Styling */
+        .info-section {
+            text-align: center;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6f61;
+            font-weight: 600;
+        }
+
+        .info-section p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #f3f3f3;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #222;
+            padding: 20px;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="upper-column">
+        <h1>Computational Mathematics</h1>
+        <p>Empowering you with the tools to solve real-world problems with precision</p>
+        <button class="btn" onclick="enhanceUpperColumn()">Explore More</button>
+    </div>
+
+    <div class="info-section">
+        <h2>Why Study Computer-Oriented Numerical Methods?</h2>
+        <p>
+            In today's digital world, computers handle many types of math problems (or mathematical operations) to solve real-life challenges. 
+            From scientific research and engineering design to business analytics and everyday calculations, computers help process large amounts 
+            of numerical data. Understanding how computers represent and manipulate numbers is essential for ensuring accuracy in calculations.
+        </p>
+    </div>
+
+    <footer>
+        © 2024 Computational Mathematics - All Rights Reserved.
+    </footer>
+
+    <script>
+        function enhanceUpperColumn() {
+            const upperColumn = document.querySelector('.upper-column');
+            upperColumn.style.background = 'linear-gradient(to right, #ff6f61, #f9a8a8)';
+            upperColumn.style.transition = 'all 0.5s ease-in-out';
+        }
+    </script>
+
+</body>
+</html>
